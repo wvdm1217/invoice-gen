@@ -1,2 +1,6 @@
+# Project
 data/
 output/
+
+# Python
+__pycache__/
