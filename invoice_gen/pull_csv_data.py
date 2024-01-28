@@ -21,12 +21,16 @@ class CSVData:
             raise ValueError(f"{input_file} is not a valid CSV file.")
         self.data: List[Dict[str, Any]] = []
         self.input_file = input_file
+        self.read_csv()
 
     def read_csv(self) -> None:
         """
         Read the CSV data from the input file and store it in self.data.
         """
-        self.data = pd.read_csv(self.input_file).to_dict("records")
+        try:
+            self.data = pd.read_csv(self.input_file).to_dict("records")
+        except:
+            raise ValueError(f"{self.input_file} is not a valid CSV file.")
 
     def __iter__(self) -> Iterator[Dict[str, Any]]:
         """
